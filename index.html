@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Shuga ❤️</title>
+
+    <!-- Handwritten font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --cream: #fff4ee;
+        --text: #3a1c24;
+        --overlay: rgba(0, 0, 0, 0.45);
+        --accent: #c94a6a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Geist",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: var(--cream);
+        color: var(--text);
+      }
+
+      /* ---------- FILM GRAIN ---------- */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+        z-index: 999;
+      }
+
+      section {
+        min-height: 100vh;
+        padding: 90px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        /* background: linear-gradient(to bottom, transparent, var(--cream)); */
+        pointer-events: none;
+      }
+
+      .content {
+        max-width: 760px;
+        text-align: center;
+        z-index: 3;
+      }
+
+      .nickname {
+        font-family: "Caveat", cursive;
+        font-size: 6rem;
+        color: var(--cream);
+      }
+
+      h1,
+      h2 {
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+
+      .content p {
+        margin-bottom: 18px;
+      }
+
+      @media (max-width: 540px) {
+        .nickname {
+          font-size: 2rem;
+        }
+      }
+
+      /* ---------- HERO ---------- */
+      .hero {
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--overlay);
+        z-index: 2;
+      }
+
+      .hero-bg img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 2s ease;
+      }
+
+      .hero-bg img.active {
+        opacity: 1;
+      }
+
+      .hero-cta {
+        margin-top: 30px;
+        display: inline-block;
+        padding: 14px 28px;
+        border-radius: 999px;
+        background: rgba(255, 29, 100, 0.614);
+        color: var(--cream);
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .hero-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      }
+
+      /* ---------- IMAGE SECTIONS ---------- */
+      .image-section {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+      }
+
+      .image-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--overlay);
+      }
+
+      @media (max-width: 768px) {
+        .image-section {
+          background-attachment: scroll;
+        }
+      }
+
+      /* ---------- CARD HINT ---------- */
+      .hint {
+        font-family: "Caveat", cursive;
+        font-size: 1.1rem;
+        margin-top: 20px;
+        opacity: 0.7;
+      }
+
+      /* ---------- CARDS ---------- */
+      .cards {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        width: 200px;
+        height: 280px;
+        border-radius: 18px;
+        overflow: hidden;
+        margin-left: -55px;
+        position: relative;
+        cursor: pointer;
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+      }
+
+      .card:first-child {
+        margin-left: 0;
+      }
+
+      .card:nth-child(1) {
+        transform: rotate(-14deg);
+      }
+      .card:nth-child(2) {
+        transform: rotate(-7deg);
+      }
+      .card:nth-child(3) {
+        transform: rotate(0);
+      }
+      .card:nth-child(4) {
+        transform: rotate(7deg);
+      }
+      .card:nth-child(5) {
+        transform: rotate(14deg);
+      }
+
+      .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+      }
+
+      .card::after {
+        content: attr(data-caption);
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+        font-family: "Caveat", cursive;
+        font-size: 1.4rem;
+        color: #fff;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+
+      .card:hover,
+      .card.active {
+        transform: rotate(0) translateY(-12px) scale(1.06);
+        z-index: 10;
+        box-shadow: 0 35px 65px rgba(0, 0, 0, 0.28);
+      }
+
+      .card:hover::after,
+      .card.active::after {
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .cards {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .card {
+          margin: 0;
+          transform: none !important;
+        }
+      }
+
+      /* ---------- FADE ---------- */
+      .fade {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: 0.9s ease;
+      }
+
+      .fade.show {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ---------- VIDEO SECTION ---------- */
+      .video-wrapper {
+        margin-top: 40px;
+        position: relative;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #000;
+
+        /* Force cinematic ratio so portrait videos don’t stretch */
+        aspect-ratio: 16 / 9;
+      }
+
+      /* Video fills wrapper */
+      .video-wrapper video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        border-radius: 18px;
+      }
+
+      /* Cover */
+      .video-cover {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transition: opacity 0.6s ease;
+      }
+
+      .video-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(100%);
+      }
+
+      /* Dark overlay */
+      .video-cover::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      /* Play button container */
+      .play-button {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+      }
+
+      /* Outer circle */
+      .play-button::before {
+        content: "";
+        width: 110px;
+        height: 110px;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        position: absolute;
+        transition: transform 0.3s ease;
+      }
+
+      /* Inner circle */
+      .play-button::after {
+        content: "";
+        width: 80px;
+        height: 80px;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      /* Triangle */
+      .play-button span {
+        width: 0;
+        height: 0;
+        border-left: 18px solid white;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        margin-left: 4px;
+        z-index: 3;
+      }
+
+      /* Hover effect */
+      .video-cover:hover .play-button::before {
+        transform: scale(1.05);
+      }
+
+      /* When playing */
+      .video-wrapper.playing video {
+        opacity: 1;
+      }
+
+      .video-wrapper.playing .video-cover {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      footer {
+        padding: 40px;
+        text-align: center;
+        color: #8a5a66;
+      }
+
+      footer .footNote {
+        display: block;
+        margin-top: 12px;
+        font-size: 1rem;
+        font-family: "Caveat", cursive;
+      }
+    </style>
+  </head>
+
+  <body>
+    <audio id="bg-music" loop>
+      <source src="music/ambient.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- HERO -->
+    <section class="hero fade">
+      <div class="hero-bg">
+        <img src="images/hero/1.JPEG" class="active" />
+        <img src="images/hero/2.JPEG" />
+        <img src="images/hero/3.JPEG" />
+      </div>
+
+      <div class="content">
+        <h1>
+          Happy Valentine’s Day, <br />
+          <span class="nickname">Mi Cucaracha ❤️</span>
+        </h1>
+
+        <div class="hero-cta" id="beginJourney">
+          Click here to begin the journey
+        </div>
+      </div>
+    </section>
+
+    <!-- WHEN WE MET -->
+    <section id="when-we-met" class="fade">
+      <div class="content">
+        <h2>When We Met</h2>
+        <p>It started simply… and became something beautiful.</p>
+
+        <div class="hint">
+          Hover or tap the photos, they have something to say.
+        </div>
+
+        <div class="cards">
+          <div class="card" data-caption="Our first ever Selfie">
+            <img src="images/2/a.JPEG" alt="Our first ever Selfie" />
+          </div>
+          <div
+            class="card"
+            data-caption="Randomly shooting she who later became my world"
+          >
+            <img
+              src="images/2/b.JPEG"
+              alt="Randomly shooting she who later became my world"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="After you lost the bet to me, you then won my heart"
+          >
+            <img
+              src="images/2/c.JPEG"
+              alt="After you lost the bet to me, you then won my heart"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="Shugaslay in her element, being effortlessly stunning as always"
+          >
+            <img
+              src="images/2/d.JPEG"
+              alt="Shugaslay in her element, being effortlessly stunning as always"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="Our first movie date, just as friends"
+          >
+            <img
+              src="images/2/e.JPEG"
+              alt="Our first movie date, just as friends"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. EARLY DAYS -->
+    <section
+      class="image-section fade"
+      style="background-image: url(&quot;images/3.JPEG&quot;)"
+    >
+      <div class="content">
+        <h2>The Early Days</h2>
+        <p>Comfort. Curiosity. Connection.</p>
+        <p>The early days felt light.</p>
+        <p>
+          Everything was new, effortless, and full of curiosity. <br />
+          We talked without forcing it. <br />
+          We laughed without thinking. <br />
+          We stayed up late with each other. <br />
+          There was comfort in the way things unfolded naturally, <br />
+          like we didn’t need to try too hard to be understood.
+        </p>
+
+        <p>
+          It was simple. It was honest. And somehow, it already felt familiar
+          <br />
+          like something meaningful was quietly taking shape.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. FALLING -->
+    <section class="fade">
+      <div class="content">
+        <h2>Falling In Love</h2>
+        <p>Love didn’t rush, it settled.</p>
+
+        <div class="cards">
+          <div
+            class="card"
+            data-caption="Our work becoming a bit more fun, just because we were together"
+          >
+            <img
+              src="images/4/a.JPEG"
+              alt="Our work becoming a bit more fun, just because we were together"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="Our first day at the park together, when the essence of us was still raw and unfolding"
+          >
+            <img
+              src="images/4/b.JPEG"
+              alt="Our first day at the park together, when the essence of us was still raw and unfolding"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="Nothing to see here, just chicken and ice-cream"
+          >
+            <img
+              src="images/4/c.JPEG"
+              alt="Nothing to see here, just chicken and ice-cream"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="Babe! Even at the office??? Nawa ooo!!!"
+          >
+            <img
+              src="images/4/d.JPEG"
+              alt="Babe! Even at the office??? Nawa ooo!!!"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="At the Cathedral, representing Verbum and representing us"
+          >
+            <img
+              src="images/4/e.JPEG"
+              alt="At the Cathedral, representing Verbum and representing us"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. JOY -->
+    <section
+      class="image-section fade"
+      style="background-image: url(&quot;images/5.JPEG&quot;)"
+    >
+      <div class="content">
+        <h2>The Joy</h2>
+        <p>The moments that felt like home.</p>
+        <p>The joy came in moments both big and small.</p>
+        <p>
+          In shared laughter. <br />
+          In pictures we didn’t plan to take. <br />
+          In memories that still warm my heart when I think about them.
+        </p>
+
+        <p>
+          It was the kind of joy that felt safe. The kind that made ordinary
+          days <br />
+          feel special. The kind that reminded me how beautiful love can be when
+          <br />
+          it’s genuine, present, and shared.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. HARD PARTS -->
+    <section class="fade">
+      <div class="content">
+        <h2>The Hard Parts</h2>
+        <p>Growth was never easy, but it was honest.</p>
+
+        <div class="cards">
+          <div class="card" data-caption="Abacha festival gone wrong">
+            <img src="images/6/a.JPEG" alt="Abacha festival gone wrong" />
+          </div>
+          <div
+            class="card"
+            data-caption="Then you had to leave me, for a chance at a better life"
+          >
+            <img
+              src="images/6/b.JPEG"
+              alt="Then you had to leave me, for a chance at a better life"
+            />
+          </div>
+          <div
+            class="card"
+            data-caption="Our video call nights, when distance was tough but we still tried to find ways to feel close"
+          >
+            <img
+              src="images/6/c.JPEG"
+              alt="Our video call nights, when distance was tough but we still tried to find ways to feel close"
+            />
+          </div>
+          <div class="card" data-caption="...">
+            <img src="images/6/d.JPEG" alt="..." />
+          </div>
+          <div
+            class="card"
+            data-caption="Pre-work video calls, when we were still figuring out how to navigate the challenges of distance and time apart"
+          >
+            <img
+              src="images/6/e.PNG"
+              alt="Pre-work video calls, when we were still figuring out how to navigate the challenges of distance and time apart"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. LESSONS -->
+    <section
+      class="image-section fade"
+      style="background-image: url(&quot;images/7.JPEG&quot;)"
+    >
+      <div class="content">
+        <h2>What We Learned</h2>
+        <p>Love is a choice, and we choose it.</p>
+        <p>We learned that love isn’t just about the good moments.</p>
+
+        <p>
+          It’s about patience. <br />
+          It’s about listening. <br />
+          It’s about choosing understanding even when it’s difficult.
+        </p>
+
+        <p>
+          We learned that growth can be uncomfortable, <br />
+          but it’s also necessary. <br />
+          And that loving someone means learning how to grow <br />
+          both together and individually <br />
+          without losing sight of what matters.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. YOU -->
+    <section class="fade">
+      <div class="content">
+        <h2>You</h2>
+        <p>You make love intentional.</p>
+
+        <div class="cards">
+          <div class="card" data-caption="Shugaslay">
+            <img src="images/8/a.JPEG" alt="Shugaslay" />
+          </div>
+          <div class="card" data-caption="Shugadazz">
+            <img src="images/8/b.JPEG" alt="Shugadazz" />
+          </div>
+          <div class="card" data-caption="Conscious Bather">
+            <img src="images/8/c.JPEG" alt="Conscious Bather" />
+          </div>
+          <div class="card" data-caption="My Spef">
+            <img src="images/8/d.JPEG" alt="My Spef" />
+          </div>
+          <div class="card" data-caption="Mi Cucaracha">
+            <img src="images/8/e.JPEG" alt="Mi Cucaracha" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. US AGAIN -->
+    <section
+      class="image-section fade"
+      style="background-image: url(&quot;images/9.JPEG&quot;)"
+    >
+      <div class="content">
+        <h2>Us, Again</h2>
+        <p>Not because it’s easy, or perfect,</p>
+        <p>but because it’s real.</p>
+
+        <p>
+          With more understanding. <br />
+          With more honesty. <br />
+          With a deeper appreciation for what we share.
+        </p>
+
+        <p>
+          This time, it feels grounded. <br />
+          Intentional. <br />
+          And filled with a quiet certainty that we’re here <br />
+          because we want to be <br />
+          choosing love with clearer eyes and open hearts.
+        </p>
+      </div>
+    </section>
+
+    <!-- 10. FUTURE -->
+    <section class="fade">
+      <div class="content">
+        <h2>Where We’re Going</h2>
+        <p>Presence. Effort. Love.</p>
+
+        <div class="cards">
+          <div
+            class="card"
+            data-caption="Choosing to be closer; in distance, in heart, in life."
+          >
+            <img src="images/10/a.png" alt="" />
+          </div>
+          <div
+            class="card"
+            data-caption="We'll see the world, and it would feel smaller cause I’m with you."
+          >
+            <img src="images/10/c.png" alt="" />
+          </div>
+          <div class="card" data-caption="Grounded in love. Guided by God.">
+            <img src="images/10/b.png" alt="" />
+          </div>
+          <div class="card" data-caption="Win or lose, it’s us. And the Chels">
+            <img src="images/10/d.png" alt="" />
+          </div>
+          <div class="card" data-caption="A forever kind of yes.">
+            <img src="images/10/e.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. CHRISTMAS REEL -->
+    <section
+      class="image-section fade"
+      style="background-image: url(&quot;images/11.jpg&quot;)"
+    >
+      <div class="content">
+        <h2>Last Christmas ❤️</h2>
+        <p>Stephen & Shuga's Super Duper Awesome Christmas in Enugu</p>
+
+        <div class="video-wrapper" id="videoWrapper">
+          <!-- Cover -->
+          <div class="video-cover" id="videoCover">
+            <img src="images/video-cover.JPEG" alt="Christmas memories" />
+
+            <div class="play-button">
+              <span></span>
+            </div>
+          </div>
+
+          <!-- Video -->
+          <video id="memoryVideo" controls preload="metadata">
+            <source src="videos/christmas.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      With Love, Odimnaobi ❤️ <br />
+      <span class="footNote"
+        >P.S.: The song <strong>"Choosing You (Shuga)"</strong> was written by yours truly, and of course, you're the first listener.</span
+      >
+    </footer>
+
+    <script>
+      /* Hero slideshow */
+      const slides = document.querySelectorAll(".hero-bg img");
+      let i = 0;
+      setInterval(() => {
+        slides[i].classList.remove("active");
+        i = (i + 1) % slides.length;
+        slides[i].classList.add("active");
+      }, 4000);
+
+      /* Fade */
+      const obs = new IntersectionObserver(
+        (e) =>
+          e.forEach((x) => x.isIntersecting && x.target.classList.add("show")),
+        { threshold: 0.2 },
+      );
+      document.querySelectorAll(".fade").forEach((el) => obs.observe(el));
+
+      /* Card tap focus */
+      const cards = document.querySelectorAll(".card");
+      cards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+          cards.forEach((c) => c !== card && c.classList.remove("active"));
+          card.classList.toggle("active");
+          e.stopPropagation();
+        });
+      });
+      document.body.addEventListener("click", () =>
+        cards.forEach((c) => c.classList.remove("active")),
+      );
+
+      /* Begin journey — cinematic version */
+      const music = document.getElementById("bg-music");
+      const begin = document.getElementById("beginJourney");
+      const target = document.getElementById("when-we-met");
+
+      let isScrolling = false;
+
+      begin.addEventListener("click", () => {
+        if (isScrolling) return; // prevent double-click
+        isScrolling = true;
+
+        // prepare music
+        music.volume = 0;
+        music.play();
+
+        const start = window.scrollY;
+        const end = target.getBoundingClientRect().top + start;
+        const duration = 2800; // adjust for slower/faster scroll
+        let startTime = null;
+
+        // ease-in-out function (smooth + emotional)
+        function easeInOut(t) {
+          return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        }
+
+        function smoothScroll(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeInOut(progress);
+
+          // scroll
+          window.scrollTo(0, start + (end - start) * eased);
+
+          // sync music fade-in with scroll
+          music.volume = Math.min(eased * 0.8, 0.8); // caps at 80%
+
+          if (progress < 1) {
+            requestAnimationFrame(smoothScroll);
+          } else {
+            isScrolling = false; // re-enable clicking after scroll ends
+          }
+        }
+
+        requestAnimationFrame(smoothScroll);
+      });
+
+      /* Video play interaction */
+      const wrapper = document.getElementById("videoWrapper");
+      const videoCover = document.getElementById("videoCover");
+      const video = document.getElementById("memoryVideo");
+
+      videoCover.addEventListener("click", () => {
+        wrapper.classList.add("playing");
+        video.play();
+      });
+
+      /* Sync ambient music with video playback */
+      const ambientMusic = document.getElementById("bg-music");
+      const christmasVideo = document.getElementById("memoryVideo");
+
+      function fadeOutMusic() {
+        let volume = ambientMusic.volume;
+        const fade = setInterval(() => {
+          volume -= 0.03;
+          if (volume <= 0) {
+            ambientMusic.volume = 0;
+            ambientMusic.pause();
+            clearInterval(fade);
+          } else {
+            ambientMusic.volume = volume;
+          }
+        }, 50);
+      }
+
+      function fadeInMusic() {
+        ambientMusic.play().catch(() => {});
+        let volume = ambientMusic.volume;
+        const target = 0.8;
+
+        const fade = setInterval(() => {
+          volume += 0.03;
+          if (volume >= target) {
+            ambientMusic.volume = target;
+            clearInterval(fade);
+          } else {
+            ambientMusic.volume = volume;
+          }
+        }, 50);
+      }
+
+      /* When video plays */
+      christmasVideo.addEventListener("play", () => {
+        if (!ambientMusic.paused) {
+          fadeOutMusic();
+        }
+      });
+
+      /* When video pauses */
+      christmasVideo.addEventListener("pause", () => {
+        fadeInMusic();
+      });
+
+      /* When video ends */
+      christmasVideo.addEventListener("ended", () => {
+        fadeInMusic();
+      });
+    </script>
+  </body>
+</html>
